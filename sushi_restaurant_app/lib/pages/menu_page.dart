@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sushi_restaurant_app/components/button.dart';
+import 'package:sushi_restaurant_app/models/food.dart';
 import 'package:sushi_restaurant_app/themes/colors.dart';
 
 class MenuPage extends StatefulWidget {
@@ -11,6 +12,23 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
+  //food menu
+  List foodMenu = [
+    //salmon sushi
+    Food(
+        name: "Salmon Sushi",
+        price: "21.00",
+        imagePath: "lib/images/sushi-can.png",
+        rating: "4.9"),
+
+    //tuna
+    Food(
+        name: "Tuna",
+        price: "23.00",
+        imagePath: "lib/images/tuna.png",
+        rating: "4.9"),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,14 +46,16 @@ class _MenuPageState extends State<MenuPage> {
           ),
         ),
         body: Column(
-          children: [
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget><Widget>[
             //promo banner
             Container(
               decoration: BoxDecoration(
                   color: primaryColor, borderRadius: BorderRadius.circular(20)),
               margin: const EdgeInsets.symmetric(horizontal: 25),
-              padding: const EdgeInsets.all(25),
+              padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 30),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     children: [
@@ -59,14 +79,49 @@ class _MenuPageState extends State<MenuPage> {
                   ),
 
                   //image
-                  Image.asset('lib\images\sushi-many.png', height: 100)
+                  Image.asset('lib/images/sushi-many.png', height: 100)
                 ],
               ),
-            )
+            ),
+            const SizedBox(height: 25),
 
             //search bar
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 25),
 
             //menu list
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Text(
+                "Food Menu",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey[800],
+                  fontSize: 18,
+                ),
+              ),
+            ),
+
+            const SizedBox(
+              height: 10,
+            ),
+
+            Expanded(child: ListView.builder(itemBuilder: (context, index) => FoodTile(),),)
 
             //popular food
           ],
