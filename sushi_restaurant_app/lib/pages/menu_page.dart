@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sushi_restaurant_app/components/button.dart';
 import 'package:sushi_restaurant_app/models/food.dart';
 import 'package:sushi_restaurant_app/themes/colors.dart';
+import '../components/food_tile.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
@@ -47,7 +48,7 @@ class _MenuPageState extends State<MenuPage> {
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget><Widget>[
+          children: <Widget>[
             //promo banner
             Container(
               decoration: BoxDecoration(
@@ -121,7 +122,15 @@ class _MenuPageState extends State<MenuPage> {
               height: 10,
             ),
 
-            Expanded(child: ListView.builder(itemBuilder: (context, index) => FoodTile(),),)
+            Expanded(
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: foodMenu.length,
+                itemBuilder: (context, index) => FoodTile(
+                  food: foodMenu[index],
+                ),
+              ),
+            )
 
             //popular food
           ],
