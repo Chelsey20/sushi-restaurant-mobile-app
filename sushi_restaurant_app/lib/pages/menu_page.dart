@@ -4,6 +4,7 @@ import 'package:sushi_restaurant_app/components/button.dart';
 import 'package:sushi_restaurant_app/models/food.dart';
 import 'package:sushi_restaurant_app/themes/colors.dart';
 import '../components/food_tile.dart';
+import 'food_details_page.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
@@ -29,6 +30,18 @@ class _MenuPageState extends State<MenuPage> {
         imagePath: "lib/images/tuna.png",
         rating: "4.9"),
   ];
+
+  //navigate to food item details page
+  void navigateToFoodDetails(int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FoodDetailsPage(
+          food: foodMenu[index],
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -91,15 +104,15 @@ class _MenuPageState extends State<MenuPage> {
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: TextField(
                 decoration: InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    hintText: "Search here.."),
               ),
             ),
 
@@ -128,11 +141,61 @@ class _MenuPageState extends State<MenuPage> {
                 itemCount: foodMenu.length,
                 itemBuilder: (context, index) => FoodTile(
                   food: foodMenu[index],
+                  onTap: () => navigateToFoodDetails(index),
                 ),
               ),
-            )
+            ),
 
             //popular food
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.grey[100],
+                borderRadius: BorderRadius.circular(20),
+              ),
+              margin: const EdgeInsets.only(
+                  left: 25, right: 25, bottom: 25, top: 25),
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Row(
+                    children: [
+                      Image.asset(
+                        'lib/images/sushi-can.png',
+                        height: 60,
+                      ),
+
+                      const SizedBox(
+                        width: 20,
+                      ),
+
+                      //name and price
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Salmon eggs",
+                            style: GoogleFonts.dmSerifDisplay(fontSize: 18),
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            '\$21.00',
+                            style: TextStyle(color: Colors.grey[700]),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+
+                  //heart
+                  const Icon(
+                    Icons.favorite_outline,
+                    color: Colors.grey,
+                    size: 28,
+                  )
+                ],
+              ),
+            )
           ],
         ));
   }
