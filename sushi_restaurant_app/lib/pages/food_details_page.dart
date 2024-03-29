@@ -23,6 +23,15 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
     });
   }
 
+  //increment
+  void incrementQuantity() {
+    setState(() {
+      setState(() {
+        quantityCount++;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,10 +139,14 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                       children: [
                         //minus button
                         Container(
+                            decoration: BoxDecoration(color: secondaryColor),
                             child: IconButton(
-                          icon: Icon(Icons.remove),
-                          onPressed: decrementQuantity,
-                        ))
+                              icon: Icon(
+                                Icons.remove,
+                                color: Colors.white,
+                              ),
+                              onPressed: decrementQuantity,
+                            ))
 
                         //quantity
 
