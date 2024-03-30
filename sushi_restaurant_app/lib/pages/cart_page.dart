@@ -7,12 +7,16 @@ import '../models/shop.dart';
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
+  //remove from cart
+  void removeFromCart() {}
   @override
   Widget build(BuildContext context) {
     return Consumer<Shop>(
       builder: (context, value, child) => Scaffold(
+        backgroundColor: primaryColor,
         appBar: AppBar(
           title: const Text("My Cart"),
+          elevation: 0,
           backgroundColor: primaryColor,
         ),
         body: ListView.builder(
@@ -28,12 +32,31 @@ class CartPage extends StatelessWidget {
             final String foodPrice = food.price;
 
             //return list tile
-            return ListTile(
-              title: Text(foodName),
-              subtitle: Text(foodPrice),
-              trailing: IconButton(
-                icon: Icon(Icons.delete),
-                onPressed: () {},
+            return Container(
+              decoration: BoxDecoration(
+                color: secondaryColor,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              margin: const EdgeInsets.only(left: 20, top: 20, right: 20),
+              child: ListTile(
+                title: Text(
+                  foodName,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                subtitle: Text(
+                  foodPrice,
+                  style: const TextStyle(color: Colors.white),
+                ),
+                trailing: IconButton(
+                  icon: const Icon(
+                    Icons.delete,
+                    color: Colors.white,
+                  ),
+                  onPressed: removeFromCart,
+                ),
               ),
             );
           },
