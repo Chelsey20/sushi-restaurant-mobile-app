@@ -1,4 +1,5 @@
 A shopping app which contains the following:
+
 ![landing_page](https://github.com/Chelsey20/Sushi-Restaurant-App/assets/68854856/71c5f79b-907d-40d0-ad9f-179889b93280)
 
 ![home page](https://github.com/Chelsey20/Sushi-Restaurant-App/assets/68854856/3481d9a9-f97a-4ab5-8c5d-dd01b2a5fcba)
