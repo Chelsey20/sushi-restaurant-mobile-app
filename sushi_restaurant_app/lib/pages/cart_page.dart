@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sushi_restaurant_app/themes/colors.dart';
@@ -10,7 +9,14 @@ class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
   //remove from cart
-  void removeFromCart() {}
+  void removeFromCart(Food food, BuildContext context) {
+    //get access to shop
+    final shop = context.read<Shop>();
+
+    //remove from cart
+    shop.removeFromCart(food);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<Shop>(
@@ -60,7 +66,7 @@ class CartPage extends StatelessWidget {
                           Icons.delete,
                           color: Colors.white,
                         ),
-                        onPressed: removeFromCart,
+                        onPressed: () => removeFromCart(food, context),
                       ),
                     ),
                   );

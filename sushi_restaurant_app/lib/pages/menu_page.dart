@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sushi_restaurant_app/components/button.dart';
-import 'package:sushi_restaurant_app/models/food.dart';
 import 'package:sushi_restaurant_app/themes/colors.dart';
 import '../components/food_tile.dart';
 import '../models/shop.dart';
