@@ -14,7 +14,7 @@ class IntroPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
 

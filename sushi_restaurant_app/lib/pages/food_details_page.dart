@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sushi_restaurant_app/components/button.dart';
 import 'package:sushi_restaurant_app/themes/colors.dart';
 import '../models/food.dart';
 
@@ -31,6 +32,9 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
       });
     });
   }
+
+  //add to cart
+  void addToCart() {}
 
   @override
   Widget build(BuildContext context) {
@@ -125,36 +129,73 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                 child: Column(
                   children: [
                     //price
-                    Text(
-                      "\$" + widget.food.price,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-
-                    // quantity
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        //minus button
-                        Container(
-                            decoration: BoxDecoration(color: secondaryColor),
-                            child: IconButton(
-                              icon: Icon(
-                                Icons.remove,
-                                color: Colors.white,
+                        Text(
+                          "\$" + widget.food.price,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+
+                        // quantity
+                        Row(
+                          children: [
+                            //minus button
+                            Container(
+                              decoration: BoxDecoration(
+                                color: secondaryColor,
+                                shape: BoxShape.circle,
                               ),
-                              onPressed: decrementQuantity,
-                            ))
+                              child: IconButton(
+                                icon: const Icon(
+                                  Icons.remove,
+                                  color: Colors.white,
+                                ),
+                                onPressed: decrementQuantity,
+                              ),
+                            ),
 
-                        //quantity
+                            //quantity
+                            SizedBox(
+                              width: 40,
+                              child: Center(
+                                child: Text(
+                                  quantityCount.toString(),
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                            ),
 
-                        //plus button
+                            //plus button
+                            Container(
+                              decoration: BoxDecoration(
+                                color: secondaryColor,
+                                shape: BoxShape.circle,
+                              ),
+                              child: IconButton(
+                                icon: const Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                ),
+                                onPressed: incrementQuantity,
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
-                    )
+                    ),
+                    const SizedBox(height: 25),
 
                     //add to cart
+                    MyButton(text: 'Add to Cart', onTap: addToCart),
                   ],
                 ),
               ),
