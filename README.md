@@ -22,6 +22,10 @@ Dart – Programming language for building the app.
 
 Provider – State management.
 
+## Live Demo
+
+[Download App Here](https://github.com/Chelsey20/sushi-restaurant-mobile-app/releases/tag/v1)
+
 ## 📦 Installation
 
 Clone the repository:
